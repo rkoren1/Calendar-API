@@ -56,6 +56,9 @@ namespace signalr.Controllers
             try
             {
                 await _context.SaveChangesAsync();
+
+                //trigger signalr
+                await _hubContext.Clients.All.NewCalendarEvent(calendarEvent);
             }
             catch (DbUpdateConcurrencyException)
             {
@@ -95,8 +98,6 @@ namespace signalr.Controllers
 
                 //trigger signalr
                 await _hubContext.Clients.All.NewCalendarEvent(newCalendar) ;
-
-                
             }
             catch
             {
@@ -118,7 +119,18 @@ namespace signalr.Controllers
             }
 
             _context.CalendarEvents.Remove(calendarEvent);
-            await _context.SaveChangesAsync();
+
+            try
+            {
+                await _context.SaveChangesAsync();
+
+                //trigger signalr
+                await _hubContext.Clients.All.DeleteCalendarEvent(id);
+            }
+            catch
+            {
+                return BadRequest();
+            }
 
             return NoContent();
         }

@@ -5,7 +5,7 @@ namespace signalr.HubConfig
     public interface ICalendarEventHub
     {
         Task NewCalendarEvent( CalendarEvent calendarEvent);
-        Task ReloadCalendar();
+        Task DeleteCalendarEvent(int Id);
     }
 
     
