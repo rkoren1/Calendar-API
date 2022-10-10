@@ -77,7 +77,7 @@ namespace signalr.Controllers
         [HttpPost]
         public async Task<ActionResult<CalendarEventDto>> PostCalendarEvent(CalendarEventDto calendarEvent)
         {
-            CalendarEvent newcalendar = new CalendarEvent()
+            CalendarEvent newCalendar = new CalendarEvent()
             {
                 Start = calendarEvent.Start,
                 End = calendarEvent.End,
@@ -87,14 +87,14 @@ namespace signalr.Controllers
                 Repetable = calendarEvent.Repetable,
                 Subject = calendarEvent.Subject
             };
-            _context.CalendarEvents.Add(newcalendar);
+            _context.CalendarEvents.Add(newCalendar);
 
             try
             {
                 await _context.SaveChangesAsync();
 
                 //trigger signalr
-                await _hubContext.Clients.All.NewCalendarEvent(newcalendar) ;
+                await _hubContext.Clients.All.NewCalendarEvent(newCalendar) ;
 
                 
             }
