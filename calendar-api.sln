@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.3.32901.215
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "signalr", "signalr\signalr.csproj", "{39569753-C3A9-46CB-87FC-86C5747DC519}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "calendar-api", "calendar-api\calendar-api.csproj", "{39569753-C3A9-46CB-87FC-86C5747DC519}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
