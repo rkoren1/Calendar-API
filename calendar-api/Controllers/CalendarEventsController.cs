@@ -21,14 +21,15 @@ namespace signalr.Controllers
         }
 
         // GET: api/CalendarEvents
+        [Route("GetCalendarEvents")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<CalendarEvent>>> GetCalendarEvents()
         {
             return await _context.CalendarEvents.ToListAsync();
         }
 
-        // GET: api/CalendarEvents/5
-        [HttpGet("{id}")]
+        [Route("GetCalendarEvent/{id}")]
+        [HttpGet]
         public async Task<ActionResult<CalendarEvent>> GetCalendarEvent(int id)
         {
             var calendarEvent = await _context.CalendarEvents.FindAsync(id);
@@ -41,9 +42,9 @@ namespace signalr.Controllers
             return calendarEvent;
         }
 
-        // PUT: api/CalendarEvents/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [Route("UpdateCalendarEvent/{id}")]
+        [HttpPut]
         public async Task<IActionResult> PutCalendarEvent(int id, CalendarEvent calendarEvent)
         {
             if (id != calendarEvent.Id)
@@ -75,8 +76,8 @@ namespace signalr.Controllers
             return NoContent();
         }
 
-        // POST: api/CalendarEvents
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+        [Route("PostCalendarEvent")]
         [HttpPost]
         public async Task<ActionResult<CalendarEventDto>> PostCalendarEvent(CalendarEventDto calendarEvent)
         {
@@ -108,8 +109,8 @@ namespace signalr.Controllers
 
         }
 
-        // DELETE: api/CalendarEvents/5
-        [HttpDelete("{id}")]
+        [Route("DeleteCalendarEvent/{id}")]
+        [HttpDelete]
         public async Task<IActionResult> DeleteCalendarEvent(int id)
         {
             var calendarEvent = await _context.CalendarEvents.FindAsync(id);
