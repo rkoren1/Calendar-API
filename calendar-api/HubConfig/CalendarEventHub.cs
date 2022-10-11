@@ -7,7 +7,7 @@ namespace signalr.HubConfig
     {
         public async Task NewCalendarEvent(CalendarEvent calendarEvent)
         {
-            await Clients.All.NewCalendarEvent(calendarEvent);
+            await Clients.Others.NewCalendarEvent(calendarEvent);
         }
         public async Task DeleteCalendarEvent(int Id)
         {

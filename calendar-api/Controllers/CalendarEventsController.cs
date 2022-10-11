@@ -28,7 +28,7 @@ namespace signalr.Controllers
             return await _context.CalendarEvents.ToListAsync();
         }
 
-        [Route("GetCalendarEvent/{id}")]
+        [Route("GetCalendarEvent")]
         [HttpGet]
         public async Task<ActionResult<CalendarEvent>> GetCalendarEvent(int id)
         {
@@ -43,7 +43,7 @@ namespace signalr.Controllers
         }
 
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [Route("UpdateCalendarEvent/{id}")]
+        [Route("UpdateCalendarEvent")]
         [HttpPut]
         public async Task<IActionResult> PutCalendarEvent(int id, CalendarEvent calendarEvent)
         {
@@ -98,7 +98,7 @@ namespace signalr.Controllers
                 await _context.SaveChangesAsync();
 
                 //trigger signalr
-                await _hubContext.Clients.All.NewCalendarEvent(newCalendar) ;
+                await _hubContext.Clients.All.NewCalendarEvent(newCalendar);
             }
             catch
             {
@@ -109,7 +109,7 @@ namespace signalr.Controllers
 
         }
 
-        [Route("DeleteCalendarEvent/{id}")]
+        [Route("DeleteCalendarEvent")]
         [HttpDelete]
         public async Task<IActionResult> DeleteCalendarEvent(int id)
         {
